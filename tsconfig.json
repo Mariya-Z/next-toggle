@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "toggle-lib": [
+        "dist/toggle-lib"
+      ],
+      "toggle-lib/*": [
+        "dist/toggle-lib/*"
+      ]
+    }
   }
 }
