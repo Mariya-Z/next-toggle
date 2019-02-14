@@ -1,3 +1,23 @@
-<p>
-  toggle works!
-</p>
+<label class="checkbox-layout">
+  <div class="checkbox-inner-container"
+      [class.checkbox-inner-container-after]="labelPosition === 'before'"
+      [class.checkbox-inner-container-no-side-margin]="!checkboxLabel.textContent.trim()">
+    <input type="checkbox"
+           class="checkbox-input cdk-visually-hidden"
+           [disabled]="disabled"
+           [required]="required"
+           [tabIndex]="tabIndex"
+           >
+
+           <!-- [checked]="checked" -->
+           <!-- [id]="inputId" -->
+           <!-- (change)="onChange($event)" -->
+    <div class="checkbox-input__thumb"></div>
+  </div>
+  <span class="slider" #checkboxLabel>
+    <!-- Add an invisible span so JAWS can read the label -->
+    <span style="display:none">&nbsp;</span>
+    <ng-content></ng-content>
+  </span>
+</label>
+
