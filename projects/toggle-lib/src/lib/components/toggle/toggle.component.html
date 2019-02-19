@@ -1,17 +1,15 @@
-<label class="checkbox-layout">
+<label [attr.for]="inputId" class="checkbox-layout" #label>
   <div class="checkbox-inner-container"
       [class.checkbox-inner-container-after]="labelPosition === 'before'"
       [class.checkbox-inner-container-no-side-margin]="!checkboxLabel.textContent.trim()">
-    <input type="checkbox"
+    <input type="checkbox" #input
            class="checkbox-input cdk-visually-hidden"
+           [checked]="checked"
            [disabled]="disabled"
+           [id]="inputId"
            [required]="required"
            [tabIndex]="tabIndex"
-           >
-
-           <!-- [checked]="checked" -->
-           <!-- [id]="inputId" -->
-           <!-- (change)="onChange($event)" -->
+           (change)="onChange($event)">
     <div class="checkbox-input__thumb"></div>
   </div>
   <span class="slider" #checkboxLabel>
