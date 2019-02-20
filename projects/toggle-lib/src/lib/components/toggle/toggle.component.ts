@@ -1,40 +1,51 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef, forwardRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef, forwardRef } from '@angular/core';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
-export function getCheckboxValueAccessor(componentClass): any {
-  return {
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => componentClass),
-    multi: true,
-  };
-}
 
 @Component({
   selector: 'next-toggle',
   templateUrl: './toggle.component.html',
   styleUrls: ['./toggle.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => ToggleComponent),
+      multi: true,
+    }
+  ]
 })
-export class ToggleComponent {
+export class ToggleComponent implements ControlValueAccessor {
   @Input() disabled: boolean;
-  @Input() labelPosition: 'before' | 'after' = 'after';
+  @Input() labelPosition: 'before' | 'after';
   @Input() required: boolean;
   @Input() tabIndex: number;
 
   private inputIdGenerator = this.idGenerator('on-off-checkbox', 'input');
-  private _changeDetectorRef: ChangeDetectorRef;
-  protected controlValueAccessorChangeFn: (value: any) => void;
+  public controlValueAccessorChangeFn: (value: any) => void;
   protected onTouched: (value: any) => void;
 
   private _checked = false;
+  counter = 0;
+
+  constructor(private changeDetectorRef: ChangeDetectorRef) {
+    // debugger;
+    this.inputId = this.inputIdGenerator();
+    // this._changeDetectorRef = changeDetectorRef;
+  }
+
   get checked(): any {
+    console.log(this.counter);
+    console.log(this.labelPosition);
+    console.log(this.required);
+    console.log(this.disabled);
     return this._checked;
   }
 
   set checked(checked: any) {
     if (checked !== this.checked) {
       this._checked = checked;
-      this._changeDetectorRef.markForCheck();
+      this.changeDetectorRef.markForCheck();
     }
   }
 
@@ -54,24 +65,17 @@ export class ToggleComponent {
 
   setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
-    this._changeDetectorRef.markForCheck();
+    this.changeDetectorRef.markForCheck();
   }
 
   onChange(event: Event): void {
     this.checked = !this.checked;
-    this.controlValueAccessorChangeFn(this.checked);
+    // this.controlValueAccessorChangeFn(this.checked);
   }
-
 
   idGenerator(prefix: string, postfix: string): () => string {
-    let counter = 0;
-    return () => `${prefix}-${++counter}-${postfix}`;
+    return () => `${prefix}-${++this.counter}-${postfix}`;
   }
-
-  constructor(inputId: string, changeDetectorRef: ChangeDetectorRef) {
-    this.inputId = this.inputIdGenerator();
-    this._changeDetectorRef = changeDetectorRef;
-   }
 
 
 }

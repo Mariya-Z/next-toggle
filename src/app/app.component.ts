@@ -8,7 +8,6 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'toggle-lib-app';
   disabled = false;
-  labelPosition = 'after';
   required = true;
   tabIndex;
 }
