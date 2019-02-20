@@ -1,6 +1,7 @@
 import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
+let counter = 0;
 
 @Component({
   selector: 'next-toggle',
@@ -20,25 +21,26 @@ export class ToggleComponent implements ControlValueAccessor {
   @Input() labelPosition: 'before' | 'after';
   @Input() required: boolean;
   @Input() tabIndex: number;
+  @Input() externalId: string;
+
+  inputId: string;
 
   private inputIdGenerator = this.idGenerator('on-off-checkbox', 'input');
   public controlValueAccessorChangeFn: (value: any) => void;
   protected onTouched: (value: any) => void;
 
   private _checked = false;
-  counter = 0;
 
   constructor(private changeDetectorRef: ChangeDetectorRef) {
-    // debugger;
+    if (this.externalId) {
+      this.inputId = this.externalId;
+    } else {
     this.inputId = this.inputIdGenerator();
-    // this._changeDetectorRef = changeDetectorRef;
+    }
   }
 
   get checked(): any {
-    console.log(this.counter);
-    console.log(this.labelPosition);
-    console.log(this.required);
-    console.log(this.disabled);
+    // console.log(this.inputId);
     return this._checked;
   }
 
@@ -48,8 +50,6 @@ export class ToggleComponent implements ControlValueAccessor {
       this.changeDetectorRef.markForCheck();
     }
   }
-
-  inputId: string;
 
   writeValue(value: any): void {
     this.checked = value;
@@ -74,7 +74,7 @@ export class ToggleComponent implements ControlValueAccessor {
   }
 
   idGenerator(prefix: string, postfix: string): () => string {
-    return () => `${prefix}-${++this.counter}-${postfix}`;
+    return () => `${prefix}-${++counter}-${postfix}`;
   }
 
 

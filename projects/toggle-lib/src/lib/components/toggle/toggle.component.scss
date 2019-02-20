@@ -67,7 +67,7 @@ $blue-outline: transparent;
       }
       &:focus + &__thumb,
       &:active + &__thumb {
-        box-shadow: 0 0 0 3px $gray-outline; // gray-outline
+        box-shadow: 0 0 0 3px $gray-outline;
       }
     
       &:checked + &__thumb {
@@ -75,7 +75,7 @@ $blue-outline: transparent;
       }
       &:checked:focus + &__thumb,
       &:checked:active + &__thumb {
-        box-shadow: 0 0 0 3px $blue-outline; // blue-outline
+        box-shadow: 0 0 0 3px $blue-outline;
       }
     
       &[disabled] + &__thumb {
