@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef, forwardRef } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef, forwardRef, OnInit } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 let counter = 0;
@@ -16,7 +16,7 @@ let counter = 0;
     }
   ]
 })
-export class ToggleComponent implements ControlValueAccessor {
+export class ToggleComponent implements ControlValueAccessor, OnInit {
   @Input() disabled: boolean;
   @Input() labelPosition: 'before' | 'after';
   @Input() required: boolean;
@@ -31,7 +31,9 @@ export class ToggleComponent implements ControlValueAccessor {
 
   private _checked = false;
 
-  constructor(private changeDetectorRef: ChangeDetectorRef) {
+  constructor(private changeDetectorRef: ChangeDetectorRef) { }
+
+  ngOnInit(): void {
     if (this.externalId) {
       this.inputId = this.externalId;
     } else {
@@ -40,7 +42,6 @@ export class ToggleComponent implements ControlValueAccessor {
   }
 
   get checked(): any {
-    // console.log(this.inputId);
     return this._checked;
   }
 

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -6,8 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'toggle-lib-app';
   disabled = false;
   required = true;
-  tabIndex;
+  tabIndex = 1;
+  checked = true;
+  isChecked = false;
+  reactiveForm = new FormGroup({
+    toggleFormControl: new FormControl({ checked: true})
+  });
+
+
 }
