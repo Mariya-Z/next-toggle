@@ -1,14 +1,23 @@
 <div>
-    <form action="">
-        <next-toggle
-            [disabled]="disabled"
-            [required]="required"
-            [tabIndex]="'1'"
-        ></next-toggle>
+    <form>
+        <div class='contener'>
+            <next-toggle class="line"
+                [disabled]="disabled"
+                [required]="required"
+                [tabIndex]="'1'"
+            ></next-toggle>
+            <label class="line" for='on-off-checkbox-1-input'>Tracking On Lorem ipsum</label>
+        </div>
+        <!-- <p></p> -->
         <next-toggle
             [disabled]="disabled"
             [required]="required"
             [tabIndex]="'2'"
-        ></next-toggle>
+        >Tracking Off</next-toggle>
+        <next-toggle
+            [disabled]="'true'"
+            [required]="required"
+            [tabIndex]="'2'"
+        >Tracking Off</next-toggle>
     </form>
 </div>
