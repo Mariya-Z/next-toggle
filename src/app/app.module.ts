@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { ToggleLibModule } from 'toggle-lib';
-import { from } from 'rxjs';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -12,6 +12,8 @@ import { from } from 'rxjs';
   imports: [
     BrowserModule,
     ToggleLibModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

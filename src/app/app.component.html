@@ -1,23 +1,34 @@
 <div>
-    <form>
-        <div class='contener'>
-            <next-toggle class="line"
-                [disabled]="disabled"
-                [required]="required"
-                [tabIndex]="'1'"
-            ></next-toggle>
-            <label class="line" for='on-off-checkbox-1-input'>Tracking On Lorem ipsum</label>
-        </div>
-        <!-- <p></p> -->
+    <form [formGroup]="reactiveForm" class='contener'>
         <next-toggle
+            [disabled]="false"
+            [required]="true"
+            [tabIndex]="'1'"
+            [externalId]="'0'"
+            formControlName="toggleFormControl"
+        ></next-toggle>
+        <label for="0">reactive form</label>
+    </form>
+  
+    <div class='contener'>
+        <next-toggle class="line"
             [disabled]="disabled"
             [required]="required"
-            [tabIndex]="'2'"
-        >Tracking Off</next-toggle>
-        <next-toggle
-            [disabled]="'true'"
-            [required]="required"
-            [tabIndex]="'2'"
-        >Tracking Off</next-toggle>
-    </form>
+            [tabIndex]="'1'"
+            [externalId]="'1'"
+            [(ngModel)]="isChecked"
+        ></next-toggle>
+        <label class="line" for='1'>Tracking On Lorem ipsum</label>
+    </div>
+
+    <div class='contener'>
+        <next-toggle class="line"
+        [disabled]="true"
+        [required]="required"
+        [tabIndex]="'1'"
+        [externalId]="'2'"
+        [(ngModel)]="checked"
+    ></next-toggle>
+    <label class="line" for='2'>Tracking On Lorem ipsum</label>
+    </div>
 </div>
