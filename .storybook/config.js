@@ -1,6 +1,5 @@
 import {configure, addDecorator} from '@storybook/angular';
-import {withOptions} from '@storybook/addon-options';
-// import '../node_modules/font-awesome/css/font-awesome.css';
+import { withOptions } from '@storybook/addon-options';
 
 // automatically import all files ending in *.stories.ts
 

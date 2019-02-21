@@ -1,30 +1,101 @@
-import { storiesOf } from '@storybook/angular';
+import { storiesOf, moduleMetadata } from '@storybook/angular';
 import { withNotes } from '@storybook/addon-notes';
 
 import * as marked from 'marked';
 import * as defaultText from './default.md';
 
-import { Welcome, Button } from '@storybook/angular/demo';
+import { ToggleComponent } from 'toggle-lib';
 
-storiesOf('Welcome', module).add('to Storybook', () => ({
-  component: Welcome,
-  props: {},
-}));
+const styles = `
+  <style>
+  </style>
+`;
 
-storiesOf('Button', module)
-  .add('with text', () => ({
-    component: Button,
-    props: {
-      text: 'Hello Button',
-    },
-  }))
-  .add(
-    'with some emoji',
-    withNotes({ text: marked(defaultText) })(() => ({
-      component: Button,
-      props: {
-        text: '😀 😎 👍 💯',
-      },
-    }))
-  );
+storiesOf('Next-toggle', module)
+  .addDecorator(
+    moduleMetadata({
+      declarations: [ToggleComponent],
+    })
+  )
+  .add('Install',
+    withNotes({text: marked(defaultText)})
+    (() => ({
+    template: `
+    <div>
+      <form>
+          <next-toggle
+              [disabled]="false"
+              [required]="true"
+              [tabIndex]="'1'"
+          >toggle lable</next-toggle>
+      </form>
+    </div>
+  `
+  })))
+  .add('Checked',
+  withNotes({text: marked(defaultText)})
+  (() => ({
+  template: `
+  <div>
+    <form action="">
+        <next-toggle
+            [disabled]="false"
+            [required]="true"
+            [tabIndex]="'1'"
+        >toggle lable</next-toggle>
+    </form>
+  </div>
+`
+})))
+.add('Disable',
+withNotes({text: marked(defaultText)})
+(() => ({
+template: `
+<div>
+  <form action="">
+      <next-toggle
+          [disabled]="true"
+          [required]="true"
+          [tabIndex]="'1'"
+      >toggle lable</next-toggle>
+  </form>
+</div>
+`
+})))
+.add('Disable checked',
+withNotes({text: marked(defaultText)})
+(() => ({
+template: `
+<div>
+<form action="">
+    <next-toggle
+        [disabled]="true"
+        [required]="true"
+        [tabIndex]="'1'"
+    >toggle lable</next-toggle>
+</form>
+</div>
+`
+})))
+.add('Tab index',
+withNotes({text: marked(defaultText)})
+(() => ({
+template: `
+<div>
+<form action="">
+    <next-toggle
+        [disabled]="false"
+        [required]="true"
+        [tabIndex]="'2'"
+    >toggle lable</next-toggle>
+    <next-toggle
+        [disabled]="false"
+        [required]="true"
+        [tabIndex]="'1'"
+    >toggle lable</next-toggle>
+</form>
+</div>
+`
+})));
+
 
