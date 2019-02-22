@@ -1,5 +1,5 @@
 <div>
-    <form [formGroup]="reactiveForm" class='contener'>
+    <form [formGroup]="reactiveForm" class='container'>
         <next-toggle
             [disabled]="false"
             [required]="true"
@@ -7,28 +7,28 @@
             [externalId]="'0'"
             formControlName="toggleFormControl"
         ></next-toggle>
-        <label for="0">reactive form</label>
+        <label for="0" class="checkbox-layout">reactive form</label>
     </form>
   
-    <div class='contener'>
-        <next-toggle class="line"
+    <div class='container'>
+        <label for='1' class="checkbox-layout">Label for toggle</label>
+        <next-toggle
             [disabled]="disabled"
             [required]="required"
             [tabIndex]="'1'"
             [externalId]="'1'"
             [(ngModel)]="isChecked"
         ></next-toggle>
-        <label class="line" for='1'>Tracking On Lorem ipsum</label>
     </div>
 
-    <div class='contener'>
-        <next-toggle class="line"
+    <div class='container'>
+        <next-toggle
         [disabled]="true"
         [required]="required"
         [tabIndex]="'1'"
         [externalId]="'2'"
         [(ngModel)]="checked"
     ></next-toggle>
-    <label class="line" for='2'>Tracking On Lorem ipsum</label>
+    <label for='2' class="checkbox-layout">Tracking On Lorem ipsum</label>
     </div>
 </div>

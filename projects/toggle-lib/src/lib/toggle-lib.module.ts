@@ -11,4 +11,4 @@ import { ToggleComponent } from './components/toggle/toggle.component';
     ToggleComponent,
   ]
 })
-export class ToggleLibModule { }
+export class NextToggleModule { }
