@@ -9,16 +9,6 @@ $blue-outline: #5291DD;
     display: flex;
 }
 
-.checkbox-layout {
-    position: relative;
-    color: $gray;
-    font-weight: 300;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    text-overflow: ellipsis;
-}
-
 .checkbox-inner-container {
     display: inline-block;
     line-height: 0;
@@ -40,14 +30,6 @@ $blue-outline: #5291DD;
     position: absolute;
     text-transform: none;
     width: 1px;
-}
-
-.checkbox-inner-container-after {
-    order: 1
-}
-  
-.checkbox-inner-container-no-side-margin {
-    margin: auto 0;
 }
 
 .checkbox-input {

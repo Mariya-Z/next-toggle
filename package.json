@@ -8,7 +8,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-library": "ng build toggle-lib",
+    "build_lib": "ng build toggle-lib",
+    "npm_pack": "cd dist/toggle-lib && npm pack",
+    "package": "npm run build_lib && npm run npm_pack",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
