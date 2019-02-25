@@ -1,11 +1,13 @@
-<div class="checkbox-inner-container">
-  <input type="checkbox" #input
-          class="checkbox-input cdk-visually-hidden"
-          [checked]="checked"
-          [disabled]="disabled"
-          [id]="inputId"
-          [required]="required"
-          [tabIndex]="tabIndex"
-          (change)="onChange($event)">
-  <div class="checkbox-input__thumb"></div>
-</div>
+<label>
+  <div class="checkbox-inner-container">
+    <input type="checkbox" #input
+           class="checkbox-input cdk-visually-hidden"
+           [checked]="checked"
+           [disabled]="disabled"
+           [id]="inputId"
+           [required]="required"
+           [tabIndex]="tabIndex"
+           (change)="onChange($event)">
+    <div class="checkbox-input__thumb"></div>
+  </div>
+</label>

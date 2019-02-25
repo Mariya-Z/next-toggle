@@ -18,7 +18,6 @@ let counter = 0;
 })
 export class ToggleComponent implements ControlValueAccessor, OnInit {
   @Input() disabled: boolean;
-  @Input() labelPosition: 'before' | 'after';
   @Input() required: boolean;
   @Input() tabIndex: number;
   @Input() externalId: string;
