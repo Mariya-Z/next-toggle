@@ -70,7 +70,7 @@ export class ToggleComponent implements ControlValueAccessor, OnInit {
 
   onChange(event: Event): void {
     this.checked = !this.checked;
-    // this.controlValueAccessorChangeFn(this.checked);
+    this.controlValueAccessorChangeFn(this.checked);
   }
 
   idGenerator(prefix: string, postfix: string): () => string {
