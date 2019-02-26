@@ -1,5 +1,5 @@
 <div>
-    <form [formGroup]="reactiveForm" class='container'>
+    <form [formGroup]="reactiveForm" class="container" ngNativeValidate>
         <next-toggle
             [disabled]="false"
             [required]="true"
@@ -8,27 +8,19 @@
             formControlName="toggleFormControl"
         ></next-toggle>
         <label for="0" class="checkbox-layout">reactive form</label>
+        <input type="submit">
     </form>
   
-    <div class='container'>
+    <form class="container" ngNativeValidate>
         <label for='1' class="checkbox-layout">Label for toggle</label>
-        <next-toggle
+        <next-toggle ngNativeValidate
             [disabled]="disabled"
             [required]="required"
             [tabIndex]="'1'"
             [externalId]="'1'"
             [(ngModel)]="isChecked"
+            name="toggle"
         ></next-toggle>
-    </div>
-
-    <div class='container'>
-        <next-toggle
-        [disabled]="true"
-        [required]="required"
-        [tabIndex]="'1'"
-        [externalId]="'2'"
-        [(ngModel)]="checked"
-    ></next-toggle>
-    <label for='2' class="checkbox-layout">Tracking On Lorem ipsum</label>
-    </div>
+        <input type="submit">
+    </form>
 </div>

@@ -10,11 +10,8 @@ export class AppComponent {
   disabled = false;
   required = true;
   tabIndex = 1;
-  checked = true;
-  isChecked = false;
+  isChecked = true;
   reactiveForm = new FormGroup({
-    toggleFormControl: new FormControl({ checked: true})
+    toggleFormControl: new FormControl( false )
   });
-
-
 }

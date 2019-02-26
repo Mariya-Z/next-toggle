@@ -2,25 +2,7 @@
 ```
 npm i next-toggle
 ```
-## Basic usage example
-
-### Add module into your app
-```
-@NgModule({
-  declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    NextToggleModule,
-  ],
-  bootstrap: [AppComponent]
-})
-
-```
-### Add murkup to the template file
-
-```
-<next-toggle></next-toggle>
-```
+### Toggle mode is defined through FormControl element or ngModel binding
 
 ### Toggle has 4 input parametrs
 ```
@@ -31,16 +13,124 @@ npm i next-toggle
 ```
 externalId is optional, if you don't pass it, id will be added automatically. In this case it's impossible to add lable for toggle
 
-### For example
+
+## Basic usage example with NgModel
+
+### Add module into your app
 ```
-<div class='container'>
-  <next-toggle
-      [disabled]="disabled"
-      [required]="required"
-      [tabIndex]="'1'"
-      [externalId]="'1'"
-      [(ngModel)]="isChecked"
-  ></next-toggle>
-  <label for='1'>Label for toggle/label>
-</div>
+import { NextToggleModule } from 'toggle-lib';
+import { FormsModule } from '@angular/forms';
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    NextToggleModule,
+    FormsModule,
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule {
+}
+
+```
+### Add code to the component file
+```
+export class AppComponent {
+  ...
+  isChecked = true;
+}
+```
+### Add murkup to the template file
+```
+<form>
+    <next-toggle
+        [disabled]="false"
+        [required]="true"
+        [tabIndex]="'1'"
+        [externalId]="'1'"
+        [(ngModel)]="isChecked"
+        name="toggle"
+    ></next-toggle>
+    <label for="1">Label for toggle</label>
+</form>
+```
+
+## Basic usage example with ReactiveForms
+
+### Add module into your app
+```
+import { NextToggleModule } from 'toggle-lib';
+import { ReactiveFormsModule } from '@angular/forms';
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    NextToggleModule,
+    ReactiveFormsModule,
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule {
+}
+```
+### Add code to the component file
+```
+export class AppComponent {
+  ...
+  reactiveForm = new FormGroup({
+    toggleFormControl: new FormControl( false )
+  });
+}
+```
+### Add murkup to the template file
+```
+<form [formGroup]="reactiveForm">
+    <next-toggle
+        [disabled]="false"
+        [required]="true"
+        [tabIndex]="'1'"
+        [externalId]="'0'"
+        formControlName="toggleFormControl"
+    ></next-toggle>
+    <label for="0">reactive form</label>
+</form>
+```
+
+
+### Template for this example looks like code below
+```
+<style>
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+  .checkbox-layout {
+    position: relative;
+    color: #9D9D9D;
+    font-weight: 600;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    text-overflow: ellipsis;
+  }
+  .container__row {
+    display: flex;
+    flex-direction: row;
+  }
+</style>
+<form class="container">
+    <div class="container__row">
+        <next-toggle
+            [disabled]="false"
+            [required]="true"
+            [tabIndex]="'1'"
+            [externalId]="'1'"
+            [(ngModel)]="isChecked"
+            name="toggle"
+        ></next-toggle>
+        <label for="1" class="checkbox-layout">Label for toggle</label>
+    </div>
+</form>
 ```

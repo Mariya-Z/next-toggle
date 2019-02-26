@@ -1,6 +1,6 @@
-## Disabled toggle
+## Required toggle
 
-If user shouldn't have possibility to change toggle mode, you have to pass true for disabled
+If toggle is necessary / toggle has to be checked, you have to pass true for required
 
 ### Tempalte for this example looks like code below
 ```
@@ -23,17 +23,18 @@ If user shouldn't have possibility to change toggle mode, you have to pass true 
     flex-direction: row;
   }
 </style>
-<form class="container">
+<form class="container" ngNativeValidate>
     <div class="container__row">
         <next-toggle
-            [disabled]="true"
+            [disabled]="flase"
             [required]="true"
             [tabIndex]="'1'"
             [externalId]="'1'"
             [(ngModel)]="isChecked"
             name="toggle"
         ></next-toggle>
-        <label for="1" class="checkbox-layout">Disabled</label>
+        <label for="1" class="checkbox-layout">Required</label>
+        <input type="submit">
     </div>
 </form>
 ```
