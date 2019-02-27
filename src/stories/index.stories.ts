@@ -15,6 +15,7 @@ const styles = `
   .container \{
     display: flex;
     flex-direction: column;
+    font-size: 30px;
   \}
   .checkbox-layout \{
     position: relative;
@@ -34,6 +35,17 @@ const styles = `
   .big \{
     font-size: 26px;
   \}
+  .submit-btn \{
+    background-color: #0460a9;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    margin: 20px 0;
+    font-size: 16px;
+    cursor: pointer;  \}
   </style>
 `;
 
@@ -182,30 +194,7 @@ storiesOf('Next-toggle', module)
     })),
   )
   .add(
-    'Required',
-    withNotes({text: marked(requiredText)})(() => ({
-      template: `
-        ${styles}
-        <form class="container" ngNativeValidate>
-            <div class="container__row">
-                <next-toggle
-                    [disabled]="false"
-                    [required]="true"
-                    [tabIndex]="'1'"
-                    [id]="'1'"
-                    [(ngModel)]="checkedState.isChecked"
-                    name="toggle"
-                ></next-toggle>
-                <label for="1" class="checkbox-layout">Required</label>
-                <input type="submit">
-            </div>
-        </form>
-  `,
-      props: {checkedState},
-    })),
-  )
-  .add(
-    'Elements order',
+    'With different tab indexes',
     withNotes({text: marked(orderText)})(() => ({
       template: `
       ${styles}
@@ -260,5 +249,30 @@ storiesOf('Next-toggle', module)
      </form>
   `,
       props: {checkedStatesForDifferentTabIndex},
+    })),
+  )
+  .add(
+    'With required attribute',
+    withNotes({text: marked(requiredText)})(() => ({
+      template: `
+        ${styles}
+        <form class="container" ngNativeValidate>
+            <div class="container__row">
+                <next-toggle
+                    [disabled]="false"
+                    [required]="true"
+                    [tabIndex]="'1'"
+                    [id]="'1'"
+                    [(ngModel)]="checkedState.isChecked"
+                    name="toggle"
+                ></next-toggle>
+                <label for="1" class="checkbox-layout">Required</label>
+            </div>
+            <div>
+                <input class="submit-btn" type="submit">
+            </div>
+        </form>
+  `,
+      props: {checkedState},
     })),
   );
