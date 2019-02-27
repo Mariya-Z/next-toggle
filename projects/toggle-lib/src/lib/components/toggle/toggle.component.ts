@@ -4,7 +4,9 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   forwardRef,
-  OnInit,
+  AfterViewInit,
+  Renderer2,
+  ElementRef,
 } from '@angular/core';
 import {NG_VALUE_ACCESSOR, ControlValueAccessor} from '@angular/forms';
 
@@ -23,39 +25,33 @@ let counter = 0;
     },
   ],
 })
-export class ToggleComponent implements ControlValueAccessor, OnInit {
-  @Input() disabled: boolean;
-  @Input() required: boolean;
-  @Input() tabIndex: number;
-  @Input() id: string;
+export class ToggleComponent implements ControlValueAccessor, AfterViewInit {
+  @Input() public disabled: boolean;
+  @Input() public required: boolean;
+  @Input() public tabIndex: number;
+  @Input() public id = `next-toggle-${++counter}`;
 
-  inputId: string;
+  private isChecked = false;
 
-  private inputIdGenerator = this.idGenerator('on-off-checkbox', 'input');
-  public controlValueAccessorChangeFn: (value: any) => void;
-  protected onTouched: (value: any) => void;
-
-  private _checked = false;
-
-  constructor(private changeDetectorRef: ChangeDetectorRef) {}
-
-  ngOnInit(): void {
-    if (this.id) {
-      this.inputId = this.id;
-    } else {
-      this.inputId = this.inputIdGenerator();
-    }
+  public get inputId(): string {
+    return this.id;
   }
 
-  get checked(): any {
-    return this._checked;
+  public get checked(): any {
+    return this.isChecked;
   }
 
-  set checked(checked: any) {
+  public set checked(checked: any) {
     if (checked !== this.checked) {
-      this._checked = checked;
+      this.isChecked = checked;
       this.changeDetectorRef.markForCheck();
     }
+  }
+
+  constructor(private changeDetectorRef: ChangeDetectorRef, private renderer: Renderer2, private el: ElementRef) {}
+
+  public ngAfterViewInit() {
+    this.renderer.removeAttribute(this.el.nativeElement, 'id');
   }
 
   public writeValue(value: any): void {
@@ -80,7 +76,6 @@ export class ToggleComponent implements ControlValueAccessor, OnInit {
     this.controlValueAccessorChangeFn(this.checked);
   }
 
-  private idGenerator(prefix: string, postfix: string): () => string {
-    return () => `${prefix}-${++counter}-${postfix}`;
-  }
+  protected controlValueAccessorChangeFn: (value: any) => void = () => null;
+  protected onTouched: (value: any) => void = () => null;
 }

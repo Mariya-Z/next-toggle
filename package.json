@@ -11,11 +11,12 @@
     "e2e": "ng e2e",
     "build_lib": "ng build toggle-lib",
     "npm_pack": "cd dist/toggle-lib && npm pack",
-    "package": "npm run build_lib && npm run npm_pack",
     "storybook": "start-storybook -p 6006",
     "deploy-storybook": "storybook-to-ghpages",
     "build-storybook": "build-storybook",
-    "postinstall": "npm run package"
+    "postinstall": "npm run package",
+    "bump": "cd projects/toggle-lib && yarn version --patch",
+    "package": "yarn bump && yarn build_lib && yarn npm_pack"
   },
   "private": true,
   "dependencies": {

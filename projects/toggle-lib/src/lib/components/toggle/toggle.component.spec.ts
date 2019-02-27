@@ -1,7 +1,7 @@
-import { async, ComponentFixture, TestBed, flush } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed, flush} from '@angular/core/testing';
 
-import { ToggleComponent } from './toggle.component';
-import { By } from '@angular/platform-browser';
+import {ToggleComponent} from './toggle.component';
+import {By} from '@angular/platform-browser';
 
 describe('ToggleComponent', () => {
   let component: ToggleComponent;
@@ -9,9 +9,8 @@ describe('ToggleComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ToggleComponent ]
-    })
-    .compileComponents();
+      declarations: [ToggleComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,6 +18,10 @@ describe('ToggleComponent', () => {
     component = fixture.componentInstance;
     component.disabled = false;
     fixture.detectChanges();
+  });
+
+  it('should generate id for element automatically', () => {
+    expect(component.inputId.startsWith('next-toggle-')).toBeTruthy();
   });
 
   it('should create', () => {
@@ -33,12 +36,7 @@ describe('ToggleComponent', () => {
     expect(input.checked).toBeTruthy();
   });
 
-  it('should generate id for element automatically', () => {
-    expect(component.inputId).toMatch('on-off-checkbox-.-input');
-  });
-
   it('should be enabled', () => {
-    console.log(component.disabled);
     const onchange = spyOn(component, 'onChange');
     const input = fixture.debugElement.query(By.css('input'));
     input.triggerEventHandler('change', new Event('change'));
@@ -53,14 +51,11 @@ describe('ToggleComponent', () => {
 
     fixture.whenStable().then(() => {
       flush();
-      console.log(component.disabled);
       const input = fixture.debugElement.query(By.css('input'));
-      console.log(input);
       input.triggerEventHandler('change', new Event('change'));
       expect(onchange).not.toHaveBeenCalled();
     });
   });
-
 });
 
 describe('ToggleComponent with external id', () => {
@@ -69,14 +64,13 @@ describe('ToggleComponent with external id', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ToggleComponent ]
-    })
-    .compileComponents();
+      declarations: [ToggleComponent],
+    }).compileComponents();
   }));
   beforeEach(() => {
     fixture = TestBed.createComponent(ToggleComponent);
     component = fixture.componentInstance;
-    component.externalId = 'someValue';
+    component.id = 'someValue';
     fixture.detectChanges();
   });
 

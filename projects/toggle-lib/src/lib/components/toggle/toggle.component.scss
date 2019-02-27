@@ -5,19 +5,12 @@ $gray-outline: #e3e3e3;
 $blue: #0460a9;
 $blue-outline: #5291dd;
 
-:host {
-  display: flex;
-}
-
 .checkbox-inner-container {
   display: inline-block;
   line-height: 0;
-  margin: auto 1em;
-  order: 0;
   position: relative;
   vertical-align: middle;
   white-space: nowrap;
-  flex-shrink: 0;
 }
 
 .cdk-visually-hidden {
@@ -39,12 +32,14 @@ $blue-outline: #5291dd;
   opacity: 0;
 
   & + &__thumb {
+    position: relative;
+    top: -.12em;
     display: inline-block;
-    width: 2.6em;
-    height: 1.6em;
+    width: 1.5em;
+    height: 1em;
     margin: 0.2em;
     border-radius: 100em;
-    background-color: $gray;
+    background-color: var(--next-toggle-gray, $gray);
     cursor: pointer;
     position: relative;
     transition-duration: 0.3s;
@@ -52,26 +47,26 @@ $blue-outline: #5291dd;
   }
   &:focus + &__thumb,
   &:active + &__thumb {
-    box-shadow: 0 0 1px 3px $blue-outline;
+    box-shadow: 0 0 1px 3px var(--next-toggle-blue-outline, $blue-outline);
   }
 
   &:checked + &__thumb {
-    background-color: $blue;
+    background-color: var(--next-toggle-blue, $blue);
   }
   &:checked:focus + &__thumb,
   &:checked:active + &__thumb {
-    box-shadow: 0 0 1px 3px $blue-outline;
+    box-shadow: 0 0 1px 3px var(--next-toggle-blue-outline, $blue-outline);
   }
 
   &[disabled] + &__thumb {
     opacity: 0.5;
-    background-color: $gray-medium;
-    cursor: not-allowed;
+    background-color: var(--next-toggle-gray-medium, $gray-medium);
+    cursor: default;
   }
   &[disabled]:active + &__thumb,
   &[disabled]:focus + &__thumb {
     opacity: 0.5;
-    box-shadow: inset 0 0 0 1px $gray;
+    box-shadow: inset 0 0 0 1px var(--next-toggle-gray, $gray);
   }
 
   & + &__thumb:before {
@@ -79,26 +74,26 @@ $blue-outline: #5291dd;
     position: absolute;
     top: 0;
     left: 0;
-    width: 1.6em;
-    height: 1.6em;
+    width: 1em;
+    height: 1em;
     border-radius: inherit;
-    box-shadow: 0 0 0 1px $gray;
-    background: $gray-light;
+    box-shadow: 0 0 0 1px var(--next-toggle-gray, $gray);
+    background: var(--next-toggle-gray-light, $gray-light);
     transition-duration: 0.3s;
-    transition-property: transform, box-shadow;
+    transition-property: transform;
+    will-change: transform;
   }
   &:active + &__thumb:before,
   &:focus + &__thumb:before {
-    background-color: $gray-light;
+    background-color: var(--next-toggle-gray-light, $gray-light);
   }
   &:checked + &__thumb:before {
-    transform: translateX(1em);
-    box-shadow: 0 0 0 1px $blue;
+    transform: translateX(0.5em);
+    box-shadow: 0 0 0 1px var(--next-toggle-blue, $blue);
   }
 
   &:checked:disabled + &__thumb:before {
-    transform: translateX(1em);
-    box-shadow: 0 0 0 1px $gray-light;
-    opacity: 0.5;
+    transform: translateX(0.5em);
+    box-shadow: 0 0 0 1px var(--next-toggle-gray, $gray);
   }
 }
