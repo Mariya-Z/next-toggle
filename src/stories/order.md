@@ -30,7 +30,7 @@ Toggle has input tabIndex parameter that's why it's possible to change elements 
           [disabled]="false"
           [required]="true"
           [tabIndex]="'3'"
-          [externalId]="'4'"
+          [id]="'4'"
           [(ngModel)]="isFirstChecked"
           name="toggle1"
       ></next-toggle>
@@ -42,7 +42,7 @@ Toggle has input tabIndex parameter that's why it's possible to change elements 
           [disabled]="false"
           [required]="true"
           [tabIndex]="'4'"
-          [externalId]="'1'"
+          [id]="'1'"
           [(ngModel)]="isSecondChecked"
           name="toggle4"
       ></next-toggle>
@@ -54,7 +54,7 @@ Toggle has input tabIndex parameter that's why it's possible to change elements 
           [disabled]="false"
           [required]="true"
           [tabIndex]="'1'"
-          [externalId]="'2'"
+          [id]="'2'"
           [(ngModel)]="isThirdChecked"
           name="toggle2"
       ></next-toggle>
@@ -66,7 +66,7 @@ Toggle has input tabIndex parameter that's why it's possible to change elements 
           [disabled]="false"
           [required]="true"
           [tabIndex]="'2'"
-          [externalId]="'3'"
+          [id]="'3'"
           name="toggle3"
           [(ngModel)]="isFourthChecked"
       ></next-toggle>

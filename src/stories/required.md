@@ -29,7 +29,7 @@ If toggle is necessary / toggle has to be checked, you have to pass true for req
             [disabled]="flase"
             [required]="true"
             [tabIndex]="'1'"
-            [externalId]="'1'"
+            [id]="'1'"
             [(ngModel)]="isChecked"
             name="toggle"
         ></next-toggle>

@@ -1,5 +1,12 @@
-import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef, forwardRef, OnInit } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import {
+  Component,
+  Input,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  forwardRef,
+  OnInit,
+} from '@angular/core';
+import {NG_VALUE_ACCESSOR, ControlValueAccessor} from '@angular/forms';
 
 let counter = 0;
 
@@ -13,14 +20,14 @@ let counter = 0;
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => ToggleComponent),
       multi: true,
-    }
-  ]
+    },
+  ],
 })
 export class ToggleComponent implements ControlValueAccessor, OnInit {
   @Input() disabled: boolean;
   @Input() required: boolean;
   @Input() tabIndex: number;
-  @Input() externalId: string;
+  @Input() id: string;
 
   inputId: string;
 
@@ -30,13 +37,13 @@ export class ToggleComponent implements ControlValueAccessor, OnInit {
 
   private _checked = false;
 
-  constructor(private changeDetectorRef: ChangeDetectorRef) { }
+  constructor(private changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    if (this.externalId) {
-      this.inputId = this.externalId;
+    if (this.id) {
+      this.inputId = this.id;
     } else {
-    this.inputId = this.inputIdGenerator();
+      this.inputId = this.inputIdGenerator();
     }
   }
 
@@ -51,31 +58,29 @@ export class ToggleComponent implements ControlValueAccessor, OnInit {
     }
   }
 
-  writeValue(value: any): void {
+  public writeValue(value: any): void {
     this.checked = value;
   }
 
-  registerOnChange(fn: any): void {
+  public registerOnChange(fn: any): void {
     this.controlValueAccessorChangeFn = fn;
   }
 
-  registerOnTouched(fn: any): void {
+  public registerOnTouched(fn: any): void {
     this.onTouched = fn;
   }
 
-  setDisabledState(isDisabled: boolean): void {
+  public setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
     this.changeDetectorRef.markForCheck();
   }
 
-  onChange(event: Event): void {
+  public onChange(event: Event): void {
     this.checked = !this.checked;
     this.controlValueAccessorChangeFn(this.checked);
   }
 
-  idGenerator(prefix: string, postfix: string): () => string {
+  private idGenerator(prefix: string, postfix: string): () => string {
     return () => `${prefix}-${++counter}-${postfix}`;
   }
-
-
 }
