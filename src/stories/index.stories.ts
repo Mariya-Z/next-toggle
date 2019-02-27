@@ -8,7 +8,7 @@ import * as disabledText from './disabled.md';
 import * as sizesText from './sizes.md';
 import * as orderText from './order.md';
 
-import {ToggleComponent} from '../../projects/toggle-lib/src/public_api';
+import {NextToggleComponent} from '../../projects/toggle-lib/src/public_api';
 
 const styles = `
   <style>
@@ -72,7 +72,7 @@ export const checkedStatesForDifferentTabIndex = {
 storiesOf('Next-toggle', module)
   .addDecorator(
     moduleMetadata({
-      declarations: [ToggleComponent],
+      declarations: [NextToggleComponent],
     }),
   )
   .add(

@@ -1,10 +1,8 @@
-import { NgModule } from '@angular/core';
-import { ToggleComponent } from './components/toggle/toggle.component';
+import {NgModule} from '@angular/core';
+import {NextToggleComponent} from './components/toggle/toggle.component';
 
 @NgModule({
-  declarations: [ToggleComponent],
-  exports: [
-    ToggleComponent,
-  ]
+  declarations: [NextToggleComponent],
+  exports: [NextToggleComponent],
 })
-export class NextToggleModule { }
+export class NextToggleModule {}

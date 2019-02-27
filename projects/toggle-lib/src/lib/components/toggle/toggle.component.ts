@@ -20,12 +20,12 @@ let counter = 0;
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => ToggleComponent),
+      useExisting: forwardRef(() => NextToggleComponent),
       multi: true,
     },
   ],
 })
-export class ToggleComponent implements ControlValueAccessor, AfterViewInit {
+export class NextToggleComponent implements ControlValueAccessor, AfterViewInit {
   @Input() public disabled: boolean;
   @Input() public required: boolean;
   @Input() public tabIndex: number;

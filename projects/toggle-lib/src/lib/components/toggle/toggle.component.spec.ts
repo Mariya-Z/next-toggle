@@ -1,20 +1,20 @@
 import {async, ComponentFixture, TestBed, flush} from '@angular/core/testing';
 
-import {ToggleComponent} from './toggle.component';
+import {NextToggleComponent} from './toggle.component';
 import {By} from '@angular/platform-browser';
 
-describe('ToggleComponent', () => {
-  let component: ToggleComponent;
-  let fixture: ComponentFixture<ToggleComponent>;
+describe('NextToggleComponent', () => {
+  let component: NextToggleComponent;
+  let fixture: ComponentFixture<NextToggleComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ToggleComponent],
+      declarations: [NextToggleComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ToggleComponent);
+    fixture = TestBed.createComponent(NextToggleComponent);
     component = fixture.componentInstance;
     component.disabled = false;
     fixture.detectChanges();
@@ -58,17 +58,17 @@ describe('ToggleComponent', () => {
   });
 });
 
-describe('ToggleComponent with external id', () => {
-  let component: ToggleComponent;
-  let fixture: ComponentFixture<ToggleComponent>;
+describe('NextToggleComponent with external id', () => {
+  let component: NextToggleComponent;
+  let fixture: ComponentFixture<NextToggleComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ToggleComponent],
+      declarations: [NextToggleComponent],
     }).compileComponents();
   }));
   beforeEach(() => {
-    fixture = TestBed.createComponent(ToggleComponent);
+    fixture = TestBed.createComponent(NextToggleComponent);
     component = fixture.componentInstance;
     component.id = 'someValue';
     fixture.detectChanges();
