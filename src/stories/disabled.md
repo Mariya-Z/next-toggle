@@ -29,7 +29,7 @@ If user shouldn't have possibility to change toggle mode, you have to pass true 
             [disabled]="true"
             [required]="true"
             [tabIndex]="'1'"
-            [externalId]="'1'"
+            [id]="'1'"
             [(ngModel)]="isChecked"
             name="toggle"
         ></next-toggle>

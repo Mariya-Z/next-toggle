@@ -9,9 +9,9 @@ npm i next-toggle
   disabled: boolean
   required: boolean
   tabIndex: number
-  externalId: string
+  id: string
 ```
-externalId is optional, if you don't pass it, id will be added automatically. In this case it's impossible to add lable for toggle
+id is optional, if you don't pass it, id will be added automatically. In this case it's impossible to add lable for toggle
 
 
 ## Basic usage example with NgModel
@@ -48,7 +48,7 @@ export class AppComponent {
         [disabled]="false"
         [required]="true"
         [tabIndex]="'1'"
-        [externalId]="'1'"
+        [id]="'1'"
         [(ngModel)]="isChecked"
         name="toggle"
     ></next-toggle>
@@ -91,7 +91,7 @@ export class AppComponent {
         [disabled]="false"
         [required]="true"
         [tabIndex]="'1'"
-        [externalId]="'0'"
+        [id]="'0'"
         formControlName="toggleFormControl"
     ></next-toggle>
     <label for="0">reactive form</label>
@@ -126,7 +126,7 @@ export class AppComponent {
             [disabled]="false"
             [required]="true"
             [tabIndex]="'1'"
-            [externalId]="'1'"
+            [id]="'1'"
             [(ngModel)]="isChecked"
             name="toggle"
         ></next-toggle>

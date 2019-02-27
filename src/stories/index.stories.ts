@@ -76,7 +76,7 @@ storiesOf('Next-toggle', module)
                     [disabled]="false"
                     [required]="true"
                     [tabIndex]="'1'"
-                    [externalId]="'1'"
+                    [id]="'1'"
                     [(ngModel)]="checkedState.isChecked"
                     name="toggle"
                 ></next-toggle>
@@ -97,7 +97,7 @@ storiesOf('Next-toggle', module)
                     [disabled]="true"
                     [required]="true"
                     [tabIndex]="'1'"
-                    [externalId]="'1'"
+                    [id]="'1'"
                     [(ngModel)]="checkedState.isChecked"
                     name="toggle"
                 ></next-toggle>
@@ -118,7 +118,7 @@ storiesOf('Next-toggle', module)
                     [disabled]="false"
                     [required]="true"
                     [tabIndex]="'1'"
-                    [externalId]="'1'"
+                    [id]="'1'"
                     [(ngModel)]="checkedState.isChecked"
                     name="toggle"
                 ></next-toggle>
@@ -140,7 +140,7 @@ storiesOf('Next-toggle', module)
                 [disabled]="false"
                 [required]="true"
                 [tabIndex]="'3'"
-                [externalId]="'4'"
+                [id]="'4'"
                 [(ngModel)]="checkedStatesForDifferentTabIndex.isFirstChecked"
                 name="toggle1"
             ></next-toggle>
@@ -152,7 +152,7 @@ storiesOf('Next-toggle', module)
                 [disabled]="false"
                 [required]="true"
                 [tabIndex]="'4'"
-                [externalId]="'1'"
+                [id]="'1'"
                 [(ngModel)]="checkedStatesForDifferentTabIndex.isSecondChecked"
                 name="toggle4"
             ></next-toggle>
@@ -164,7 +164,7 @@ storiesOf('Next-toggle', module)
                 [disabled]="false"
                 [required]="true"
                 [tabIndex]="'1'"
-                [externalId]="'2'"
+                [id]="'2'"
                 [(ngModel)]="checkedStatesForDifferentTabIndex.isThirdChecked"
                 name="toggle2"
             ></next-toggle>
@@ -176,7 +176,7 @@ storiesOf('Next-toggle', module)
                 [disabled]="false"
                 [required]="true"
                 [tabIndex]="'2'"
-                [externalId]="'3'"
+                [id]="'3'"
                 name="toggle3"
                 [(ngModel)]="checkedStatesForDifferentTabIndex.isFourthChecked"
             ></next-toggle>
@@ -197,7 +197,7 @@ storiesOf('Next-toggle', module)
                     [disabled]="false"
                     [required]="true"
                     [tabIndex]="'3'"
-                    [externalId]="'1'"
+                    [id]="'1'"
                     [(ngModel)]="checkedStatesForDifferentSize.isFirstChecked"
                     name="toggle1"
                 ></next-toggle>
@@ -209,7 +209,7 @@ storiesOf('Next-toggle', module)
                     [disabled]="false"
                     [required]="true"
                     [tabIndex]="'2'"
-                    [externalId]="'2'"
+                    [id]="'2'"
                     [(ngModel)]="checkedStatesForDifferentSize.isSecondChecked"
                     name="toggle2"
                 ></next-toggle>
@@ -221,7 +221,7 @@ storiesOf('Next-toggle', module)
                     [disabled]="false"
                     [required]="true"
                     [tabIndex]="'1'"
-                    [externalId]="'3'"
+                    [id]="'3'"
                     [(ngModel)]="checkedStatesForDifferentSize.isThirdChecked"
                     name="toggle3"
                 ></next-toggle>

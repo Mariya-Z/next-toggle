@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import {Component} from '@angular/core';
+import {FormGroup, FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   disabled = false;
@@ -12,6 +12,6 @@ export class AppComponent {
   tabIndex = 1;
   isChecked = true;
   reactiveForm = new FormGroup({
-    toggleFormControl: new FormControl( false )
+    toggleFormControl: new FormControl({value: false, disabled: this.disabled}),
   });
 }

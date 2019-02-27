@@ -3,8 +3,6 @@ import { ToggleComponent } from './components/toggle/toggle.component';
 
 @NgModule({
   declarations: [ToggleComponent],
-  imports: [
-  ],
   exports: [
     ToggleComponent,
   ]

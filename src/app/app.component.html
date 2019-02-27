@@ -1,26 +1,26 @@
 <div>
-    <form [formGroup]="reactiveForm" class="container" ngNativeValidate>
-        <next-toggle
-            [disabled]="false"
-            [required]="true"
-            [tabIndex]="'1'"
-            [externalId]="'0'"
-            formControlName="toggleFormControl"
-        ></next-toggle>
-        <label for="0" class="checkbox-layout">reactive form</label>
-        <input type="submit">
-    </form>
-  
-    <form class="container" ngNativeValidate>
-        <label for='1' class="checkbox-layout">Label for toggle</label>
-        <next-toggle ngNativeValidate
-            [disabled]="disabled"
-            [required]="required"
-            [tabIndex]="'1'"
-            [externalId]="'1'"
-            [(ngModel)]="isChecked"
-            name="toggle"
-        ></next-toggle>
-        <input type="submit">
-    </form>
+  <form [formGroup]="reactiveForm" class="container" ngNativeValidate>
+    <next-toggle
+      [required]="true"
+      [tabIndex]="'1'"
+      [id]="'0'"
+      formControlName="toggleFormControl"
+    ></next-toggle>
+    <label for="0" class="checkbox-layout">reactive form</label>
+    <input type="submit" />
+  </form>
+
+  <form class="container" ngNativeValidate>
+    <label for="1" class="checkbox-layout">Label for toggle</label>
+    <next-toggle
+      ngNativeValidate
+      [disabled]="disabled"
+      [required]="required"
+      [tabIndex]="'1'"
+      [id]="'1'"
+      [(ngModel)]="isChecked"
+      name="toggle"
+    ></next-toggle>
+    <input type="submit" />
+  </form>
 </div>

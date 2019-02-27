@@ -39,7 +39,7 @@ Toggle size depends on font size, developer should change just font size, toggle
             [disabled]="false"
             [required]="true"
             [tabIndex]="'3'"
-            [externalId]="'1'"
+            [id]="'1'"
             [(ngModel)]="isFirstChecked"
             name="toggle1"
         ></next-toggle>
@@ -51,7 +51,7 @@ Toggle size depends on font size, developer should change just font size, toggle
             [disabled]="false"
             [required]="true"
             [tabIndex]="'2'"
-            [externalId]="'2'"
+            [id]="'2'"
             [(ngModel)]="isSecondChecked"
             name="toggle2"
         ></next-toggle>
@@ -63,7 +63,7 @@ Toggle size depends on font size, developer should change just font size, toggle
             [disabled]="false"
             [required]="true"
             [tabIndex]="'1'"
-            [externalId]="'3'"
+            [id]="'3'"
             [(ngModel)]="isThirdChecked"
             name="toggle3"
         ></next-toggle>
