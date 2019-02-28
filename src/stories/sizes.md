@@ -43,7 +43,7 @@ Toggle size depends on font size, developer should change just font size, toggle
             [(ngModel)]="isFirstChecked"
             name="toggle1"
         ></next-toggle>
-        <label for="1" class="small checkbox-layout">Small</label>
+        <label for="1" class="small checkbox-layout">10px</label>
     </div>
 
     <div class="container__row">
@@ -55,7 +55,7 @@ Toggle size depends on font size, developer should change just font size, toggle
             [(ngModel)]="isSecondChecked"
             name="toggle2"
         ></next-toggle>
-        <label for="2" class="medium checkbox-layout">Medium</label>
+        <label for="2" class="medium checkbox-layout">16px</label>
     </div>
 
     <div class="container__row">
@@ -67,7 +67,7 @@ Toggle size depends on font size, developer should change just font size, toggle
             [(ngModel)]="isThirdChecked"
             name="toggle3"
         ></next-toggle>
-        <label for="3" class="big checkbox-layout">Big</label>
+        <label for="3" class="big checkbox-layout">26px</label>
     </div>
 </form>
 ```

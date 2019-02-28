@@ -26,14 +26,39 @@ If user shouldn't have possibility to change toggle mode, you have to pass true 
 <form class="container">
     <div class="container__row">
         <next-toggle
-            [disabled]="true"
-            [required]="true"
-            [tabIndex]="'1'"
-            [id]="'1'"
-            [(ngModel)]="isChecked"
-            name="toggle"
+            [disabled]="false"
+            id="1"
+            [(ngModel)]="isFirstChecked"
+            name="toggle1"
         ></next-toggle>
-        <label for="1" class="checkbox-layout">Disabled</label>
+        <label for="1">Active on</label>
+    </div>
+    <div class="container__row">
+        <next-toggle
+            [disabled]="false"
+            id="2"
+            [(ngModel)]="isFirstUnChecked"
+            name="toggle2"
+        ></next-toggle>
+        <label for="2">Active off</label>
+    </div>
+    <div class="container__row">
+        <next-toggle
+            [disabled]="true"
+            id="3"
+            [(ngModel)]="isThirdUnChecked"
+            name="toggle3"
+        ></next-toggle>
+        <label for="3">Disabled off</label>
+    </div>
+    <div class="container__row">
+        <next-toggle
+            [disabled]="true"
+            id="3"
+            [(ngModel)]="isThirdChecked"
+            name="toggle4"
+        ></next-toggle>
+        <label for="3">Disabled on</label>
     </div>
 </form>
 ```

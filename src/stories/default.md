@@ -105,6 +105,7 @@ export class AppComponent {
   .container {
     display: flex;
     flex-direction: column;
+    font-size: 30px;
   }
   .checkbox-layout {
     position: relative;
