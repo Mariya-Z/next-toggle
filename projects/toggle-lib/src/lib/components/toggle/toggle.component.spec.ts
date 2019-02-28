@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed, flush} from '@angular/core/testing';
+import {async, ComponentFixture, TestBed, flush, fakeAsync} from '@angular/core/testing';
 import {NextToggleComponent} from './toggle.component';
 import {By} from '@angular/platform-browser';
 import {Component, DebugElement} from '@angular/core';
@@ -7,6 +7,8 @@ import {NgModel, FormsModule, ReactiveFormsModule, FormControl} from '@angular/f
 describe('NextToggleComponent', () => {
   let component: NextToggleComponent;
   let fixture: ComponentFixture<NextToggleComponent>;
+  let toggleDebugElement: DebugElement;
+  let toggleInstance: NextToggleComponent;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -17,16 +19,18 @@ describe('NextToggleComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(NextToggleComponent);
     component = fixture.componentInstance;
+    // toggleDebugElement = fixture.debugElement.query(By.directive(NextToggleComponent));
+    // toggleInstance = toggleDebugElement.componentInstance;
     component.disabled = false;
     fixture.detectChanges();
   });
 
-  it('should generate id for element automatically', () => {
-    expect(component.inputId.startsWith('next-toggle-')).toBeTruthy();
-  });
-
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should generate id for element automatically', () => {
+    expect(component.inputId.startsWith('next-toggle-')).toBeTruthy();
   });
 
   it('should change value by click', () => {
@@ -44,19 +48,21 @@ describe('NextToggleComponent', () => {
     expect(onchange).toHaveBeenCalled();
   });
 
-  it('should be disabled', async () => {
+  it('should be disabled', async (fakeAsync(() => {
+    toggleDebugElement = fixture.debugElement.query(By.directive(NextToggleComponent));
+    toggleInstance = toggleDebugElement.componentInstance;
     const onchange = spyOn(component, 'onChange');
-
-    component.disabled = true;
+    toggleInstance.disabled = true;
     fixture.detectChanges();
 
     fixture.whenStable().then(() => {
       flush();
+      console.log('23');
       const input = fixture.debugElement.query(By.css('input'));
       input.triggerEventHandler('change', new Event('change'));
       expect(onchange).not.toHaveBeenCalled();
     });
-  });
+  })));
 });
 
 describe('NextToggleComponent with external id', () => {
@@ -103,12 +109,37 @@ describe('ngModel', () => {
     component = fixture.componentInstance;
   });
 
-  it('test writeVaue', () => {
-    console.log(toggleInstance);
-    
-    expect(toggleInstance.disabled).toBe(true);
-    expect(toggleInstance.required).toBe(true);
-    expect(toggleInstance.checked).not.toBe(true);
+  it('should call writeVaue', () => {
+    const spyOnSetDisabledState = spyOn(toggleInstance, 'writeValue');
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      expect(spyOnSetDisabledState).toHaveBeenCalled();
+    });
+
+    // expect(toggleInstance.disabled).toBe(true);
+    // expect(toggleInstance.required).toBe(true);
+    // expect(toggleInstance.checked).not.toBe(true);
+  });
+
+  it('should call setDisabled', () => {
+    const spyOnSetDisabledState = spyOn(toggleInstance, 'setDisabledState');
+    component.disabled = !component.disabled;
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      expect(spyOnSetDisabledState).toHaveBeenCalled();
+    });
+  });
+
+  it('should react on click', () => {
+    const input = fixture.debugElement.query(By.css('input')).nativeElement;
+    const spyOnRegisterChange = spyOn(toggleInstance, 'registerOnChange');
+    const spyOnRegisterOnTouched = spyOn(toggleInstance, 'registerOnTouched');
+    input.click();
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      expect(spyOnRegisterChange).toHaveBeenCalled();
+      expect(spyOnRegisterOnTouched).toHaveBeenCalled();
+    });
   });
 });
 
@@ -116,10 +147,10 @@ describe('ngModel', () => {
   template: `
     <form class="ng-model-form">
       <next-toggle
-        [disabled]="true"
-        [required]="true"
-        [tabIndex]="'1'"
-        [id]="'1'"
+        [disabled]="disabled"
+        [required]="required"
+        [tabIndex]="tabIndex"
+        [id]="id"
         [(ngModel)]="isChecked"
         name="toggle"
       ></next-toggle>
@@ -128,7 +159,7 @@ describe('ngModel', () => {
   `,
 })
 class ToggleWithNgModel {
-  public disabled: boolean = true;
+  public disabled: boolean = false;
   public required: boolean = true;
   public tabIndex: number = 1;
   public id: string = '1';
