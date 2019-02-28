@@ -7,11 +7,11 @@ import {FormGroup, FormControl, Validators} from '@angular/forms';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  disabled = false;
-  required = true;
-  tabIndex = 1;
-  isChecked = true;
-  reactiveForm = new FormGroup({
+  public disabled = false;
+  public required = true;
+  public tabIndex = 1;
+  public isChecked = true;
+  public reactiveForm = new FormGroup({
     toggleFormControl: new FormControl({value: false, disabled: this.disabled}),
   });
 }

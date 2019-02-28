@@ -3,6 +3,7 @@
 If toggle is necessary / toggle has to be checked, you have to pass true for required
 
 ### Tempalte for this example looks like code below
+
 ```
 <style>
   .container {
@@ -22,6 +23,18 @@ If toggle is necessary / toggle has to be checked, you have to pass true for req
     display: flex;
     flex-direction: row;
   }
+  .submit-btn {
+    background-color: #0460a9;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    margin: 20px 0;
+    font-size: 16px;
+    cursor: pointer;
+  }
 </style>
 <form class="container" ngNativeValidate>
     <div class="container__row">
@@ -34,7 +47,7 @@ If toggle is necessary / toggle has to be checked, you have to pass true for req
             name="toggle"
         ></next-toggle>
         <label for="1" class="checkbox-layout">Required</label>
-        <input type="submit">
+        <input class="submit-btn" type="submit">
     </div>
 </form>
 ```
