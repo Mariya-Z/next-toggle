@@ -1,7 +1,8 @@
 import {async, ComponentFixture, TestBed, flush} from '@angular/core/testing';
-
 import {NextToggleComponent} from './toggle.component';
 import {By} from '@angular/platform-browser';
+import {Component, DebugElement} from '@angular/core';
+import {NgModel, FormsModule, ReactiveFormsModule, FormControl} from '@angular/forms';
 
 describe('NextToggleComponent', () => {
   let component: NextToggleComponent;
@@ -78,3 +79,58 @@ describe('NextToggleComponent with external id', () => {
     expect(component.inputId).toEqual('someValue');
   });
 });
+
+describe('ngModel', () => {
+  let component: ToggleWithNgModel;
+  let fixture: ComponentFixture<ToggleWithNgModel>;
+  let toggleDebugElement: DebugElement;
+  let toggleInstance: NextToggleComponent;
+  let ngModel: NgModel;
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [FormsModule],
+      declarations: [ToggleWithNgModel, NextToggleComponent],
+    }).compileComponents();
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(ToggleWithNgModel);
+    fixture.detectChanges();
+    toggleDebugElement = fixture.debugElement.query(By.directive(NextToggleComponent));
+    toggleInstance = toggleDebugElement.componentInstance;
+    ngModel = toggleDebugElement.injector.get<NgModel>(NgModel);
+    component = fixture.componentInstance;
+  });
+
+  it('test writeVaue', () => {
+    console.log(toggleInstance);
+    
+    expect(toggleInstance.disabled).toBe(true);
+    expect(toggleInstance.required).toBe(true);
+    expect(toggleInstance.checked).not.toBe(true);
+  });
+});
+
+@Component({
+  template: `
+    <form class="ng-model-form">
+      <next-toggle
+        [disabled]="true"
+        [required]="true"
+        [tabIndex]="'1'"
+        [id]="'1'"
+        [(ngModel)]="isChecked"
+        name="toggle"
+      ></next-toggle>
+      <label for="1" class="checkbox-layout">reactive form</label>
+    </form>
+  `,
+})
+class ToggleWithNgModel {
+  public disabled: boolean = true;
+  public required: boolean = true;
+  public tabIndex: number = 1;
+  public id: string = '1';
+  public isChecked: boolean = true;
+}
