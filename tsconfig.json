@@ -11,21 +11,11 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "es5",
-    "typeRoots": [
-      "node_modules/@types",
-      "./typings.d.ts"
-    ],
-    "lib": [
-      "es2018",
-      "dom"
-    ],
+    "typeRoots": ["node_modules/@types", "./typings.d.ts"],
+    "lib": ["es2018", "dom"],
     "paths": {
-      "toggle-lib": [
-        "dist/toggle-lib"
-      ],
-      "toggle-lib/*": [
-        "dist/toggle-lib/*"
-      ]
+      "next-toggle": ["dist/next-toggle"],
+      "next-toggle/*": ["dist/next-toggle/*"]
     }
   }
 }
