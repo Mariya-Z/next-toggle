@@ -263,7 +263,7 @@ storiesOf('Next-toggle', module)
                     [required]="true"
                     [tabIndex]="'1'"
                     [id]="'1'"
-                    [(ngModel)]="checkedState.isChecked"
+                    [(ngModel)]="checkedState.isFirstUnChecked"
                     name="toggle"
                 ></next-toggle>
                 <label for="1" class="checkbox-layout">Required</label>
