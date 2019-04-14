@@ -11,12 +11,8 @@ If user shouldn't have possibility to change toggle mode, you have to pass true 
   }
   .checkbox-layout {
     position: relative;
-    color: #9D9D9D;
     font-weight: 600;
     margin: 0;
-    display: flex;
-    align-items: center;
-    text-overflow: ellipsis;
   }
   .container__row {
     display: flex;

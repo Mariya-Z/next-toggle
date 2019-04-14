@@ -109,12 +109,8 @@ export class AppComponent {
   }
   .checkbox-layout {
     position: relative;
-    color: #9D9D9D;
     font-weight: 600;
     margin: 0;
-    display: flex;
-    align-items: center;
-    text-overflow: ellipsis;
   }
   .container__row {
     display: flex;
